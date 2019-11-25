@@ -18,5 +18,7 @@ namespace MOD.TrainingService.Repositories
         public void Delete(int Userid,int Mentorid);
 
         public void EditById(int id,string status,int progress);
+
+        public void EditRating(int id,string rating);
     }
 }

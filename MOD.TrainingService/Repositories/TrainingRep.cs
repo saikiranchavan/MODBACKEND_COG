@@ -80,5 +80,12 @@ namespace MOD.TrainingService.Repositories
             obj.Progress = progress;
             _context.SaveChanges();
         }
+
+        public void EditRating(int id,string rating)
+        {
+            var obj = _context.Trainings.Find(id);
+            obj.rating = rating;
+            _context.SaveChanges();
+        }
     }
 }

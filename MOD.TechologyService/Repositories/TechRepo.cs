@@ -13,18 +13,18 @@ namespace MOD.TechnologyService.Repositories
         {
             _context = techContext;
         }
-        public string Add(Technology item)
+        public void Add(Technology item)
         {
             _context.Technologies.Add(item);
             _context.SaveChanges();
-            return "Technologies Added";
+            
         }
 
         public string Edit(Technology item)
         {
             _context.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
-            return "Technology Edited";
+            return "Ok";
         }
 
         public IEnumerable<Technology> GetAllTechnologies()
@@ -40,6 +40,13 @@ namespace MOD.TechnologyService.Repositories
         public Technology GetTechnologyById(int id)
         {
             return _context.Technologies.SingleOrDefault(i =>i.TechID==id);
+        }
+
+        public void deleteTechnology(int id)
+        {
+            var obj= _context.Technologies.Find(id);
+            _context.Remove(obj);
+            _context.SaveChanges();
         }
     }
 }

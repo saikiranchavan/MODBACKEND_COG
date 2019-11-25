@@ -70,6 +70,14 @@ namespace MOD.TrainingService.Controllers
             _repository.Edit(item);
         }
 
+        // PUT: api/Training/5
+        [HttpPut("{id}/{rating}")]
+        [Route("UpdateTrainingRating/{id}/{rating}")]
+        public void Put(int id,string rating)
+        {
+            _repository.EditRating(id,rating);
+        }
+
         [HttpPut("{id}/{status}/{progress}")]
         [Route("UpdateTrainingByID/{id}/{status}/{progress}")]
         public void Put1(int id,string status,int progress)

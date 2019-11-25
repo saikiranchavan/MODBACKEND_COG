@@ -7,8 +7,9 @@ namespace MOD.TechnologyService.Repositories
 {
     public interface ITechRepo
     {
-        string Add(Technology item);
+        void Add(Technology item);
         string Edit(Technology item);
+        public void deleteTechnology(int id);
         IEnumerable<Technology> GetAllTechnologies();
 
         Technology GetTechnology(string name);

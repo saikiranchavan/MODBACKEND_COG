@@ -45,24 +45,33 @@ namespace MOD.TechnologyService.Controllers
         // POST: api/Technology
         [HttpPost("{item}")]
         [Route("AddTech")]
-        public string Post(Technology item)
+        public IActionResult Post(Technology item)
         {
-            return repository.Add(item);
+            repository.Add(item);
+
+            return Ok();
         }
 
         // PUT: api/Technology/5
         [HttpPut("{item}")]
         [Route("UpdateTech")]
-        public string Put(Technology item)
+        public IActionResult Put(Technology item)
         {
-            return repository.Edit(item);
+            var a=repository.Edit(item);
+            return Ok();
         }
 
         // DELETE: api/ApiWithActions/5
-        /*[HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{id}")]
+        [Route("DeleteTechnology/{id}")]
+        public IActionResult Delete(int id)
         {
-            repository.
-        }*/
+            if (id == 0)
+            {
+                repository.deleteTechnology(id);
+                return Ok();
+            }
+            return BadRequest();
+        }
     }
 }
